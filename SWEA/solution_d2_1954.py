@@ -33,41 +33,71 @@
 #     for row in snail:
 #         print(*row)
 #     print()
+# ================================================================================================================
+# T = int(input())
+#
+# for tc in range(1, T+1):
+#     N = int(input())
+#     # N * N 의 빈 리스트 생성
+#     snail = [[0] * N for _ in range(N)]
+#
+#     #방향 전환
+#     # 우 하 좌 상
+#     dx = [0, 1, 0, -1]
+#     dy = [1, 0, -1, 0]
+#
+#     dist = 0 # 0:우, 1:하, 2:좌:, 3:사에0
+#     #초기 좌표
+#     x = y = 0
+#     snail[x][y] = 1
+#
+#     for num in range(2, N**2+1):
+#         x += dx[dist]
+#         y += dy[dist]
+#         #배열에 숫자 채우기
+#         snail[x][y] = num
+#         # 인덱스가 범위 안에 있고, 숫자가 아직 안써졌다면 같은 모드 유지
+#         if 0 <= x+dx[dist] < N and 0 <= y + dy[dist] < N and not snail[x+dx[dist][y+dy[dist]]]:
+#             continue
+#         # 아니라면 dist 변경
+#         if dist != 3:
+#             dist += 1
+#         else:
+#             dist = 0
+#
+#     print(f'#{tc}')
+#     for i in snail:
+#         print(*i)
 
-T= int(input())
-
-for tc in range(1, T+1):
-    N = int(input())
-    # N * N 의 빈 리스트 생성
-    snail = [[0] * N for _ in range(N)]
-
-    #방향 전환
-    # 우 하 좌 상
+# ================================================================================================================
+def make_snail(n):
     dx = [0, 1, 0, -1]
     dy = [1, 0, -1, 0]
+    complete_snail = [[0 for _ in range(n)] for _ in range(n)]
 
-    dist = 0 # 0:우, 1:하, 2:좌:, 3:사에0
-    #초기 좌표
-    x = y = 0
-    snail[x][y] = 1
+    #0, 0에서 초기화
+    cnt = 1
+    direction = 0
+    x, y = 0, 0
+    complete_snail = [x][y] = cnt
 
-    for num in range(2, N**2+1):
-        x += dx[dist]
-        y += dy[dist]
-        #배열에 숫자 채우기
-        snail[x][y] = num
-        # 인덱스가 범위 안에 있고, 숫자가 아직 안써졌다면 같은 모드 유지
-        if 0 <= x+dx[dist] < N and 0 <= y + dy[dist] < N and not snail[x+dx[dist][y+dy[dist]]]:
-            continue
-        # 아니라면 dist 변경
-        if dist != 3:
-            dist += 1
-        else:
-            dist = 0
+    #cnt가 모든 칸에 기록될 때 까지
+    while cnt != N**2:
+        nx = x + dx[direction]
+        ny = y + dy[direction]
 
-    print(f'#{tc}')
-    for i in snail:
-        print(*i)
+        if 0 <= nx < N and 0<= ny < N and not complete_snail[nx][ny]:
+            cnt += 1
+            complete_snail[nx][ny] = cnt
+            x, y = nx, ny
+        else: # 진입 못하면 방향 시계방향 전환
+            direction = (direction) % 4
 
+    return complete_snail
 
-
+for text in range(1, int(input())):
+    N = int(input())
+    snail = make_snail(N)
+    print(f'#{text}')
+    for i in range(N):
+        print(*snail[i])
