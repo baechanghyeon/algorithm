@@ -46,8 +46,10 @@ def dijkstra(start) :
 dijkstra(start)
 
 # 모든 노드로 가기 위한 최단 거리를 출력
-for i in range(i, n + 1) :
+for i in range(1, n + 1) :
   # 도달 할 수 없는 경우, 무한 이라고 출력
   if distance[i] == INF :
-    
+    print("INFINITY")
+  else :
+    print(distance[i])
 
