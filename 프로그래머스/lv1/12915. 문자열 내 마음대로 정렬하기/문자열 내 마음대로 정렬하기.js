@@ -8,7 +8,7 @@ function solution(strings, n) {
 
     })
     // 정렬하기
-    const result = [...a].sort((a,b) => {
+    const result = a.sort((a,b) => {
         if (a > b) return 1;
         if (a < b) return -1;
     })
