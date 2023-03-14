@@ -3,7 +3,6 @@ function solution(s, n) {
     for(let i = 0 ; i < s.length; i ++)
     {
         let p = s.charCodeAt(i)
-        if(p === 32) answer += ""
         
         if(64 < p && p < 91) {
             p += n
