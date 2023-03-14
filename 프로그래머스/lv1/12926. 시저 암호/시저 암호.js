@@ -20,13 +20,5 @@ function solution(s, n) {
     return answer
 }
 
-const test = solution("AB", 1);
-console.log(test)
-// solution("z", 1);
-// solution("Z", 10);
-// solution("a B z", 4);
-// solution(" aBZ", 20);
-// solution("y X Z", 4);
-// solution(" . h z", 20);
 
 
