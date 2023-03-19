@@ -15,7 +15,7 @@ function solution(progresses, speeds) {
     let cnt = 1
     for(let i=1; i<result.length; i++) {
         console.log(work, result[i], cnt)
-        if(work >= result[i]) cnt++;
+        if(work > result[i]) cnt++;
         else if(work < result[i]){
             work = result[i]
             answer.push(cnt)
