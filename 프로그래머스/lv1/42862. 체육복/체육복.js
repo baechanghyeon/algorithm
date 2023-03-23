@@ -14,7 +14,6 @@ function solution(n, lost, reserve) {
             }
          
         }
-        console.log(lost, reserve)
     }    
 // 수업들을 수 있는 학생 = 전체학생 - lost 학생     
     return n - lost.length
